@@ -1,5 +1,6 @@
 package eonjang.notice_catch_calendar
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -13,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +40,19 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        button.setOnClickListener(){
+            startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+        }
+        button1.setOnClickListener(){
+            var sIntent= Intent(this, NotifiedAllowSetting::class.java)
+            startActivity(sIntent)
+        }
+        button2.setOnClickListener(){
+            var eIntent= Intent(this, KeywordSetting::class.java)
+            startActivity(eIntent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
