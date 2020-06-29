@@ -1,27 +1,43 @@
 package eonjang.notice_catch_calendar
 
+import android.content.ContentValues
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_memo.*
 
 class MemoActivity : AppCompatActivity() {
+
+    lateinit var dbHelper : DBHelper
+    lateinit var database : SQLiteDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memo)
 
         val intent = getIntent()
+        var s_title : String = " "
+        var s_color : String = " "
+        var s_memo : String = " "
         var year = intent.getIntExtra("Year", 0)
         var month = intent.getIntExtra("Month", 0)
         var day = intent.getIntExtra("Day", 0)
+        Log.e("year", year.toString())
+
+        dbHelper = DBHelper(this, "newdb.db", null, 1)
+        database = dbHelper.writableDatabase
 
         var start_hour = 0
         var start_minute = 0
         var finish_hour = 0
         var finish_minute = 0
+        var start_time = "$start_hour:$start_minute"
+        var finish_time = "$finish_hour:$finish_minute"
 
         start_time_hour.minValue = 0
         start_time_hour.maxValue = 23
@@ -51,9 +67,17 @@ class MemoActivity : AppCompatActivity() {
         }
 
         btn_ok.setOnClickListener {
-            Log.e("start_hour", start_hour.toString())
-            Log.e("finish_hour", finish_hour.toString())
-            if ((start_hour.toInt() < finish_hour.toInt()) && (start_minute < finish_minute)) {
+            s_title = memo_title.text.toString()
+            s_memo = memo.text.toString()
+            start_time = "$start_hour:$start_minute"
+            finish_time = "$finish_hour:$finish_minute"
+            Log.e("start_hour", start_time)
+            Log.e("finish_hour", finish_time)
+            if ((start_hour.toString()+start_minute.toString()).toInt() <= (finish_hour.toString()+finish_minute.toString()).toInt()) {
+                Log.e("year", year.toString())
+                var query =
+                    "INSERT INTO mytable('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$s_title','$s_memo','$start_time','$finish_time','$s_color');"
+                database.execSQL(query)
                 finish()
             }
             else{
