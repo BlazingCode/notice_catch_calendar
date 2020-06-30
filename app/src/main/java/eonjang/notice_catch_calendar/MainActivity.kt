@@ -20,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import kotlinx.android.synthetic.main.content_main.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,9 +36,17 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        var s_year = 0
-        var s_month = 0
-        var s_day = 0
+        val simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+        val arr = simpleDateFormat.format(Date()).split(".")
+        var s_year = arr[0].toInt()
+        var s_month = arr[1].toInt()
+        var s_day = arr[2].toInt()
+        Log.e("s_year", s_year.toString())
+
+        Log.e("s_month", s_month.toString())
+
+        Log.e("s_day", s_day.toString())
+
 
         dbHelper = DBHelper(this, "newdb.db", null, 1)
         database = dbHelper.writableDatabase

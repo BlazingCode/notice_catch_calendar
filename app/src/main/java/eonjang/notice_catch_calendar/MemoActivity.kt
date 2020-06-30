@@ -1,15 +1,13 @@
 package eonjang.notice_catch_calendar
 
-import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
-import android.widget.NumberPicker
 import android.widget.Toast
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_memo.*
+import petrov.kristiyan.colorpicker.ColorPicker
+import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
 
 class MemoActivity : AppCompatActivity() {
 
@@ -62,6 +60,10 @@ class MemoActivity : AppCompatActivity() {
             finish_minute = new
         }
 
+        btn_color.setOnClickListener {
+            colorPicker()
+        }
+
         btn_cancle.setOnClickListener {
             finish()
         }
@@ -84,5 +86,24 @@ class MemoActivity : AppCompatActivity() {
                 Toast.makeText(this, "시작 시간과 종료 시간을 확인해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun colorPicker(){
+        var cp=ColorPicker(this)
+        var colors = arrayListOf<String>("#000000", "#FFFFFF", "#00FF00", "#FF0000", "#0000FF")
+
+        cp.setColors(colors) // 만들어둔 list 적용
+            .setColumns(5) // 5열로 설정
+            .setRoundColorButton(true) // 원형 버튼으로 설정
+            .setOnChooseColorListener(object : OnChooseColorListener {
+                override fun onChooseColor(position: Int, color: Int) {
+                    btn_color.setBackgroundColor(color) // OK 버튼 클릭 시 이벤트
+                }
+
+                override fun onCancel() {
+                    // Cancel 버튼 클릭 시 이벤트
+                }
+            }).show() // dialog 생성
+
     }
 }
