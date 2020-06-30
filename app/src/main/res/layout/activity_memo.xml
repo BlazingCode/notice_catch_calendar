@@ -59,7 +59,7 @@
             <NumberPicker
                 android:id="@+id/start_time_hour"
                 android:layout_height="match_parent"
-                android:layout_width="50dp"/>
+                android:layout_width="50dp" />
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
@@ -112,7 +112,7 @@
         android:background="@drawable/round_top_layout">
 
         <EditText
-            android:id="@+id/memo"
+            android:id="@+id/edit_memo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="메모"/>

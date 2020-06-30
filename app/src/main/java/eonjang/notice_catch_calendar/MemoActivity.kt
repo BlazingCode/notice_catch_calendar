@@ -1,10 +1,14 @@
 package eonjang.notice_catch_calendar
 
+import android.content.ContentValues
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_memo.*
 import petrov.kristiyan.colorpicker.ColorPicker
 import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
@@ -13,29 +17,63 @@ class MemoActivity : AppCompatActivity() {
 
     lateinit var dbHelper : DBHelper
     lateinit var database : SQLiteDatabase
+    var s_color : Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_memo)
 
-        val intent = getIntent()
-        var s_title : String = " "
-        var s_color : String = " "
-        var s_memo : String = " "
-        var year = intent.getIntExtra("Year", 0)
-        var month = intent.getIntExtra("Month", 0)
-        var day = intent.getIntExtra("Day", 0)
-        Log.e("year", year.toString())
+        btn_delete.visibility = View.VISIBLE
 
         dbHelper = DBHelper(this, "newdb.db", null, 1)
         database = dbHelper.writableDatabase
 
+        var start_time : String
+        var finish_time : String
         var start_hour = 0
         var start_minute = 0
         var finish_hour = 0
         var finish_minute = 0
-        var start_time = "$start_hour:$start_minute"
-        var finish_time = "$finish_hour:$finish_minute"
+        var db_id : Int = 0
+        var s_title : String = " "
+        var s_memo : String = " "
+
+        val intent = getIntent()
+
+        var year = intent.getIntExtra("Year", 0)
+        var month = intent.getIntExtra("Month", 0)
+        var day = intent.getIntExtra("Day",0)
+        var type = intent.getIntExtra("Type", 0)
+
+        if(type == 1){      // 수정, 삭제
+            db_id = intent.getIntExtra("DB_Id", 0)
+            var query = "SELECT * FROM mytable WHERE _id = '$db_id'"
+            var c = database.rawQuery(query,null)
+
+            while(c.moveToNext()) {
+                memo_title.setText(c.getString(c.getColumnIndex("title")))
+                edit_memo.setText(c.getString(c.getColumnIndex("memo")))
+
+                var start_time = c.getString(c.getColumnIndex("start_time"))
+                var finish_time = c.getString(c.getColumnIndex("finish_time"))
+                var arr1 = start_time.split(":")
+                var arr2 = finish_time.split(":")
+                start_hour = arr1[0].toInt()
+                start_minute = arr1[1].toInt()
+                finish_hour = arr2[0].toInt()
+                finish_minute = arr2[1].toInt()
+                start_time_hour.value = start_hour
+
+                var color = c.getInt(c.getColumnIndex("color"))
+                btn_color.setBackgroundColor(color)
+            }
+        }
+        else if(type == 2){         // 추가
+            btn_delete.visibility = View.INVISIBLE
+        }
+        else{
+            //error
+        }
 
         start_time_hour.minValue = 0
         start_time_hour.maxValue = 23
@@ -64,23 +102,50 @@ class MemoActivity : AppCompatActivity() {
             colorPicker()
         }
 
+        btn_delete.setOnClickListener {
+            var arr : Array<String> = arrayOf(db_id.toString())
+            database.delete("mytable","_id=?", arr)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         btn_cancle.setOnClickListener {
             finish()
         }
 
         btn_ok.setOnClickListener {
             s_title = memo_title.text.toString()
-            s_memo = memo.text.toString()
+            s_memo = edit_memo.text.toString()
             start_time = "$start_hour:$start_minute"
             finish_time = "$finish_hour:$finish_minute"
             Log.e("start_hour", start_time)
             Log.e("finish_hour", finish_time)
+
             if ((start_hour.toString()+start_minute.toString()).toInt() <= (finish_hour.toString()+finish_minute.toString()).toInt()) {
                 Log.e("year", year.toString())
-                var query =
-                    "INSERT INTO mytable('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$s_title','$s_memo','$start_time','$finish_time','$s_color');"
-                database.execSQL(query)
-                finish()
+                if(type == 1){
+                    var contentValues = ContentValues()
+                    contentValues.put("title", "$s_title")
+                    contentValues.put("memo", "$s_memo")
+                    contentValues.put("start_time", "$start_time")
+                    contentValues.put("finish_time", "$finish_time")
+                    contentValues.put("color", "$s_color")
+
+                    var arr : Array<String> = arrayOf("$db_id")
+
+                    database.update("mytable", contentValues, "_id = ?", arr)
+
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else if(type == 2){
+                    var query =
+                        "INSERT INTO mytable('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$s_title','$s_memo','$start_time','$finish_time','$s_color');"
+                    database.execSQL(query)
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
             else{
                 Toast.makeText(this, "시작 시간과 종료 시간을 확인해주세요.", Toast.LENGTH_SHORT).show()
@@ -97,6 +162,8 @@ class MemoActivity : AppCompatActivity() {
             .setRoundColorButton(true) // 원형 버튼으로 설정
             .setOnChooseColorListener(object : OnChooseColorListener {
                 override fun onChooseColor(position: Int, color: Int) {
+                    Log.e("color", color.toString())
+                    s_color = color
                     btn_color.setBackgroundColor(color) // OK 버튼 클릭 시 이벤트
                 }
 
