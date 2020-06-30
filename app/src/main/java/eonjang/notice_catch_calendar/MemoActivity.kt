@@ -1,11 +1,14 @@
 package eonjang.notice_catch_calendar
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
@@ -17,7 +20,7 @@ class MemoActivity : AppCompatActivity() {
 
     lateinit var dbHelper : DBHelper
     lateinit var database : SQLiteDatabase
-    var s_color : Int = -1
+    var s_color : Int = -65536
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,7 @@ class MemoActivity : AppCompatActivity() {
 
         btn_delete.visibility = View.VISIBLE
 
-        dbHelper = DBHelper(this, "newdb.db", null, 1)
+        dbHelper = DBHelper(this, "NoticeDB.db", null, 1)
         database = dbHelper.writableDatabase
 
         var start_time : String
@@ -47,7 +50,7 @@ class MemoActivity : AppCompatActivity() {
 
         if(type == 1){      // 수정, 삭제
             db_id = intent.getIntExtra("DB_Id", 0)
-            var query = "SELECT * FROM mytable WHERE _id = '$db_id'"
+            var query = "SELECT * FROM calendar WHERE _id = '$db_id'"
             var c = database.rawQuery(query,null)
 
             while(c.moveToNext()) {
@@ -62,7 +65,6 @@ class MemoActivity : AppCompatActivity() {
                 start_minute = arr1[1].toInt()
                 finish_hour = arr2[0].toInt()
                 finish_minute = arr2[1].toInt()
-                start_time_hour.value = start_hour
 
                 var color = c.getInt(c.getColumnIndex("color"))
                 btn_color.setBackgroundColor(color)
@@ -75,15 +77,28 @@ class MemoActivity : AppCompatActivity() {
             //error
         }
 
+
+        Log.e("start_hour", start_hour.toString())
+
+        Log.e("start_time_hour", start_time_hour.getValue().toString())
+
+
         start_time_hour.minValue = 0
         start_time_hour.maxValue = 23
+        start_time_hour.value = start_hour
+
         start_time_minute.minValue = 0
         start_time_minute.maxValue = 59
+        start_time_minute.value = start_minute
 
         finish_time_hour.minValue = 0
         finish_time_hour.maxValue = 23
+        finish_time_hour.value = finish_hour
+
+
         finish_time_minute.minValue = 0
         finish_time_minute.maxValue = 59
+        finish_time_minute.value = finish_minute
 
         start_time_hour.setOnValueChangedListener { numberPicker, old, new ->
             start_hour = new
@@ -104,7 +119,7 @@ class MemoActivity : AppCompatActivity() {
 
         btn_delete.setOnClickListener {
             var arr : Array<String> = arrayOf(db_id.toString())
-            database.delete("mytable","_id=?", arr)
+            database.delete("calendar","_id=?", arr)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -133,14 +148,14 @@ class MemoActivity : AppCompatActivity() {
 
                     var arr : Array<String> = arrayOf("$db_id")
 
-                    database.update("mytable", contentValues, "_id = ?", arr)
+                    database.update("calendar", contentValues, "_id = ?", arr)
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
                 else if(type == 2){
                     var query =
-                        "INSERT INTO mytable('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$s_title','$s_memo','$start_time','$finish_time','$s_color');"
+                        "INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$s_title','$s_memo','$start_time','$finish_time','$s_color');"
                     database.execSQL(query)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
@@ -155,14 +170,13 @@ class MemoActivity : AppCompatActivity() {
 
     private fun colorPicker(){
         var cp=ColorPicker(this)
-        var colors = arrayListOf<String>("#000000", "#FFFFFF", "#00FF00", "#FF0000", "#0000FF")
+        var colors = arrayListOf<String>("#FF0000", "#FFBB00", "#FFE400", "#ABF200", "#1FDA11", "#00D8FF", "#0055FF", "#6600FF", "#FF00DD", "#FF007F")
 
         cp.setColors(colors) // 만들어둔 list 적용
             .setColumns(5) // 5열로 설정
             .setRoundColorButton(true) // 원형 버튼으로 설정
             .setOnChooseColorListener(object : OnChooseColorListener {
                 override fun onChooseColor(position: Int, color: Int) {
-                    Log.e("color", color.toString())
                     s_color = color
                     btn_color.setBackgroundColor(color) // OK 버튼 클릭 시 이벤트
                 }

@@ -12,7 +12,7 @@ class DBHelper (
     ): SQLiteOpenHelper(context, name, factory, version){
 
     override fun onCreate(db: SQLiteDatabase) {
-        var sql : String = "CREATE TABLE if not exists mytable " +
+        var sql : String = "CREATE TABLE if not exists calendar " +
                             "(_id integer primary key autoincrement," +
                             "year," +
                             "month," +
@@ -26,7 +26,7 @@ class DBHelper (
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        val sql: String = "DROP TABLE if exists mytable"
+        val sql: String = "DROP TABLE if exists calendar"
 
         db.execSQL(sql)
         onCreate(db)

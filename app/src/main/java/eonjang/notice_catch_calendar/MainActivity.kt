@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         Log.e("s_day", s_day.toString())
 
 
-        dbHelper = DBHelper(this, "newdb.db", null, 1)
+        dbHelper = DBHelper(this, "NoticeDB.db", null, 1)
         database = dbHelper.writableDatabase
         var mAdapter:ListAdapter=ListAdapter(this)
         val listView = findViewById<ListView>(R.id.listView)
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         private val arrayFtime = arrayListOf<String>()
         private val arrayColor = arrayListOf<Int>()
 
-        var dbHelper = DBHelper(context, "newdb.db", null, 1)
+        var dbHelper = DBHelper(context, "NoticeDB.db", null, 1)
         var database = dbHelper.writableDatabase
 
         init{
@@ -141,8 +141,21 @@ class MainActivity : AppCompatActivity() {
             val titleView = rowMain.findViewById<TextView>(R.id.list_title)
             titleView.text = arrayTitle.get(position)
             val timeView = rowMain.findViewById<TextView>(R.id.list_time)
-            timeView.text = arrayStime.get(position) + "~" + arrayFtime.get(position)
-            val colorView = rowMain.findViewById<TextView>(R.id.list_color)
+            var stime = arrayStime.get(position).split(":").toMutableList()
+            var ftime = arrayFtime.get(position).split(":").toMutableList()
+
+            for(i in 0..1){
+                if(stime[i].toInt() <10){
+                    stime[i] = "0" + stime[i].toString()
+                }
+                if(ftime[i].toInt() <10){
+                    ftime[i] = "0" + ftime[i].toString()
+                }
+            }
+            timeView.text = stime[0]+":"+stime[1]+"~"+ftime[0]+":"+ftime[1]
+
+            //timeView.text = arrayStime.get(position) + "~" + arrayFtime.get(position)
+            val colorView = rowMain.findViewById<ImageView>(R.id.list_color)
             colorView.setBackgroundColor(arrayColor.get(position))
 
             return rowMain
@@ -153,7 +166,7 @@ class MainActivity : AppCompatActivity() {
             arrayStime.clear()
             arrayFtime.clear()
             arrayColor.clear()
-            var query = "SELECT * FROM mytable WHERE year = '$s_year' AND month = '$s_month' AND day = '$s_day'"
+            var query = "SELECT * FROM calendar WHERE year = '$s_year' AND month = '$s_month' AND day = '$s_day'"
             var c = database.rawQuery(query,null)
             while(c.moveToNext()){
                 arrayId.add(c.getInt(c.getColumnIndex("_id")))
