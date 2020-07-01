@@ -83,11 +83,11 @@ class NotificationListener : NotificationListenerService() {
                 if (!(keywordSet.none())) {
                     if (findKeyword(notiTitle + " " + text)) {
                         Log.d("Sucess",packageName+" "+text)
-                        database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$title','$memo','$start_time','$finish_time','$color'); ")
+                        database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                     }
                 } else {
                     Log.d("Sucess",packageName+" "+text)
-                    database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$title','$memo','$start_time','$finish_time','$color'); ")
+                    database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                 }
             }
         } else {
@@ -95,11 +95,11 @@ class NotificationListener : NotificationListenerService() {
                 if (!(keywordSet.none())) {
                     if (findKeyword(notiTitle + " " + text)) {
                         Log.d("Sucess",packageName+" "+text)
-                        database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$title','$memo','$start_time','$finish_time','$color'); ")
+                        database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                     }
                 } else {
                     Log.d("Sucess",packageName+" "+text)
-                    database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$title','$memo','$start_time','$finish_time','$color'); ")
+                    database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                 }
             }
         }
@@ -115,18 +115,16 @@ class NotificationListener : NotificationListenerService() {
 
     fun findDate(notiString: String): Boolean {
         var flag = false
-        val fullDateRegex =
-            "/^(19|20)\\d{2}년(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일\$/".toRegex()
-        val fullDateRegex2 = "/^\\d{2}년(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일\$/".toRegex()
-        val fullDateRegex3 =
-            "/^(19|20)\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1])\$/".toRegex()
-        val fullDateRegex4 = "/^\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1]).\$/".toRegex()
-        val halfDateRegex = "/^(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일\$/".toRegex()
-        val halfDateRegex2 = "/^(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1])\$/".toRegex()
-        val quarterDateRegex = "/^(0[1-9]|[12][0-9]|3[0-1])일\$/".toRegex()
-        val fullTimeRegex = "/^([1-9]|[01][0-9]|2[0-3]):([0-5][0-9])$/".toRegex()
-        val fullTimeRegex2 = "/^([1-9]|[01][0-9]|2[0-3])시([0-5][0-9])분$/".toRegex()
-        val hourRegex = "/^([1-9]|[01][0-9]|2[0-3])시$/".toRegex()
+        val fullDateRegex = "(19|20)\\d{2}년(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일".toRegex()
+        val fullDateRegex2 = "\\d{2}년(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일".toRegex()
+        val fullDateRegex3 = "(19|20)\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1])".toRegex()
+        val fullDateRegex4 = "\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1])".toRegex()
+        val halfDateRegex = "(0[1-9]|1[012])월(0[1-9]|[12][0-9]|3[0-1])일".toRegex()
+        val halfDateRegex2 = "(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[0-1])".toRegex()
+        val quarterDateRegex = "(0[1-9]|[12][0-9]|3[0-1])일".toRegex()
+        val fullTimeRegex = "([1-9]|[01][0-9]|2[0-3]):([0-5][0-9])".toRegex()
+        val fullTimeRegex2 = "([1-9]|[01][0-9]|2[0-3])시([0-5][0-9])분".toRegex()
+        val hourRegex = "([1-9]|[01][0-9]|2[0-3])시".toRegex()
 
         if (!(fullDateRegex.find(notiString)?.value.equals(null))) {
             flag = true
