@@ -28,10 +28,14 @@ class KeywordSetting :AppCompatActivity(){
         var mAdapter =keywordAdapter(this)
         listView.adapter=mAdapter
 
+        keywordBackButton.setOnClickListener(){
+            finish()
+        }
+
         keywordSave.setOnClickListener(){
             var input=input_keyword.text.toString()
-            Log.d("insert",input)
-            if(input_keyword.text.equals(null)) {
+            Log.d("insert",input.length.toString())
+            if(input.length==0) {
                 Toast.makeText(this,"키워드를 입력해 주세요",Toast.LENGTH_SHORT).show()
             }else{
                 database.execSQL("INSERT INTO keyword('word') values('$input');")

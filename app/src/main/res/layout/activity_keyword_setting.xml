@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <ImageButton
-            android:id="@+id/appSettingBackButton"
+            android:id="@+id/keywordBackButton"
             style="@style/Widget.AppCompat.ImageButton"
             android:layout_width="36dp"
             android:layout_height="36dp"

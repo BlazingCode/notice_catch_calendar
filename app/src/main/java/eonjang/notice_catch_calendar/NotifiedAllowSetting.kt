@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +14,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_keyword_setting.*
-import kotlinx.android.synthetic.main.activity_keyword_setting.appSettingBackButton
 import kotlinx.android.synthetic.main.activity_notified_allow_setting.*
 
 
@@ -67,10 +67,18 @@ class NotifiedAllowSetting:AppCompatActivity() {
 private class AppListAdapter(context: Context):BaseAdapter() {
     private val mContext:Context
     private var checkState:MutableSet<String>
+    var dbHelper :DBHelper
+    var database :SQLiteDatabase
+    var c :Cursor
 
     init{
         mContext=context
         checkState= mutableSetOf()
+        dbHelper = DBHelper(mContext,"NoticeDB.db",null,1)
+        database = dbHelper.writableDatabase
+        c= database.rawQuery(" SELECT * FROM appList",null)
+        while(c.moveToNext())
+            checkState.add(c.getString(1))
     }
     override fun getCount(): Int {
         return list.size
