@@ -6,20 +6,38 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="kt" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a4aa6af-2885-4ab9-aa72-3cd5d9c58099" name="Default Changelist" comment="">
+    <list default="true" id="37040c1a-11a6-4c5d-a1be-13c7bdc5e945" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/NotificationListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/NotificationListener.kt" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_28" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -28,66 +46,23 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
+        <projects_view />
       </state>
     </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Interface" />
-        <option value="resourceFile" />
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1dx73uNYDlJ9tgKYQHzJJFD6xGO" />
+  <component name="ProjectId" id="1e8gVhVBb53F4NFmCkI1s3ibJtt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="R3CM405DAVT" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-01T02:31:22.692Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Dependencies" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
-  </component>
-  <component name="RecentsManager">
-    <key name="android.template.packageName">
-      <recent name="eonjang.notice_catch_calendar" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Eon\AndroidStudioProjects\notice_catch_calendar\app\src\main\res\mipmap-xxhdpi" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -154,47 +129,78 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8a4aa6af-2885-4ab9-aa72-3cd5d9c58099" name="Default Changelist" comment="" />
-      <created>1593354694804</created>
+      <changelist id="37040c1a-11a6-4c5d-a1be-13c7bdc5e945" name="Default Changelist" comment="" />
+      <created>1593708659304</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1593354694804</updated>
+      <updated>1593708659304</updated>
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="634" y="254" key="FileChooserDialogImpl" timestamp="1593571241079">
-      <screen x="0" y="0" width="1707" height="1027" />
+    <state x="1060" y="440" key="FileChooserDialogImpl" timestamp="1593711809772">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="634" y="254" key="FileChooserDialogImpl/0.0.1707.1027@0.0.1707.1027" timestamp="1593571241079" />
-    <state width="1662" height="277" key="GridCell.Tab.0.bottom" timestamp="1593571632755">
-      <screen x="0" y="0" width="1707" height="1027" />
+    <state x="1060" y="440" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1593711809772" />
+    <state width="2517" height="169" key="GridCell.Tab.0.bottom" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1662" height="277" key="GridCell.Tab.0.bottom/0.0.1707.1027@0.0.1707.1027" timestamp="1593571632755" />
-    <state width="1662" height="277" key="GridCell.Tab.0.center" timestamp="1593571632754">
-      <screen x="0" y="0" width="1707" height="1027" />
+    <state width="2517" height="169" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.0.center" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1662" height="277" key="GridCell.Tab.0.center/0.0.1707.1027@0.0.1707.1027" timestamp="1593571632754" />
-    <state width="1662" height="277" key="GridCell.Tab.0.left" timestamp="1593571632754">
-      <screen x="0" y="0" width="1707" height="1027" />
+    <state width="2517" height="169" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.0.left" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1662" height="277" key="GridCell.Tab.0.left/0.0.1707.1027@0.0.1707.1027" timestamp="1593571632754" />
-    <state width="1662" height="277" key="GridCell.Tab.0.right" timestamp="1593571632755">
-      <screen x="0" y="0" width="1707" height="1027" />
+    <state width="2517" height="169" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.0.right" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1662" height="277" key="GridCell.Tab.0.right/0.0.1707.1027@0.0.1707.1027" timestamp="1593571632755" />
+    <state width="2517" height="169" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.1.bottom" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="169" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.1.center" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="169" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.1.left" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="169" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+    <state width="2517" height="169" key="GridCell.Tab.1.right" timestamp="1593716131851">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="169" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1593716131851" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/NotificationListener.kt</url>
+          <line>145</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/NotificationListener.kt</url>
+          <line>77</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/app/src/main/java/eonjang/notice_catch_calendar/NotificationListener.kt</url>
+          <line>144</line>
+          <properties class="eonjang.notice_catch_calendar.NotificationListener" method="findDate" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="((GeneratorSequence)tmp).getNextValue" custom="kotlin.sequences.GeneratorSequence" />
+        <watch expression="((GeneratorSequence)tmp).getNextValue" custom="kotlin.sequences.GeneratorSequence" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
