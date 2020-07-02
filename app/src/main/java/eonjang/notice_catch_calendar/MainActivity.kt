@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
 
+    var backWait : Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -118,6 +120,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         navView.setNavigationItemSelectedListener(this)
     }
 
+    override fun onBackPressed() {
+        if(System.currentTimeMillis() - backWait >= 2000){
+            backWait = System.currentTimeMillis()
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        } else {
+            finish()
+        }
+    }
 
     private class ListAdapter(context: Context) : BaseAdapter(){
         private val mContext: Context = context

@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_memo.*
@@ -118,10 +119,19 @@ class MemoActivity : AppCompatActivity() {
         }
 
         btn_delete.setOnClickListener {
-            var arr : Array<String> = arrayOf(db_id.toString())
-            database.delete("calendar","_id=?", arr)
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val dlgView = layoutInflater.inflate((R.layout.delete_dialog), null)
+            val dlgBuilder = AlertDialog.Builder(this)
+            dlgBuilder.setTitle("")
+            dlgBuilder.setView(dlgView)
+            dlgBuilder.setPositiveButton("네") { dialogInterface, i ->
+                var arr : Array<String> = arrayOf(db_id.toString())
+                database.delete("calendar","_id=?", arr)
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }.setNegativeButton("취소") { dialogInterface, i ->
+
+            }.show()
+
         }
 
         btn_cancle.setOnClickListener {
