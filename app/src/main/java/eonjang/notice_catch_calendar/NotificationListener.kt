@@ -11,6 +11,7 @@ import android.os.IBinder
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import java.util.*
 
@@ -62,8 +63,8 @@ class NotificationListener : NotificationListenerService() {
             keywordSet.add(keywordCusor.getString(1))
 
         var extras = sbn?.getNotification()?.extras;
-        var notiTitle = extras?.getString(Notification.EXTRA_TITLE);
-        var text = extras?.getCharSequence(Notification.EXTRA_TEXT);
+        var notiTitle = extras?.getString(Notification.EXTRA_TITLE).toString()
+        var text = extras?.getCharSequence(Notification.EXTRA_TEXT).toString()
         var packageName = sbn?.getPackageName()
 
         year = dateInstance.get(Calendar.YEAR).toString()
@@ -83,10 +84,18 @@ class NotificationListener : NotificationListenerService() {
                 if (!(keywordSet.none())) {
                     if (findKeyword(notiTitle + " " + text)) {
                         Log.d("Sucess",packageName+" "+text)
+                        Toast.makeText(this,packageName+" "+" "+notiTitle+text,Toast.LENGTH_LONG).show()
+                        year=year.toInt().toString()
+                        month=month.toInt().toString()
+                        day=day.toInt().toString()
                         database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                     }
                 } else {
                     Log.d("Sucess",packageName+" "+text)
+                    Toast.makeText(this,packageName+" "+" "+notiTitle+text,Toast.LENGTH_LONG).show()
+                    year=year.toInt().toString()
+                    month=month.toInt().toString()
+                    day=day.toInt().toString()
                     database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                 }
             }
@@ -95,10 +104,18 @@ class NotificationListener : NotificationListenerService() {
                 if (!(keywordSet.none())) {
                     if (findKeyword(notiTitle + " " + text)) {
                         Log.d("Sucess",packageName+" "+text)
+                        Toast.makeText(this,packageName+" "+" "+notiTitle+text,Toast.LENGTH_LONG).show()
+                        year=year.toInt().toString()
+                        month=month.toInt().toString()
+                        day=day.toInt().toString()
                         database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                     }
                 } else {
                     Log.d("Sucess",packageName+" "+text)
+                    Toast.makeText(this,packageName+" "+" "+notiTitle+text,Toast.LENGTH_LONG).show()
+                    year=year.toInt().toString()
+                    month=month.toInt().toString()
+                    day=day.toInt().toString()
                     database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
                 }
             }
@@ -130,7 +147,6 @@ class NotificationListener : NotificationListenerService() {
             flag = true
             var tmp = fullDateRegex.findAll(notiString)
             var date = tmp.last()!!.value.split("년", "월", "일")
-            year = date[0]
             month = date[1]
             day = date[2]
         }
@@ -139,7 +155,6 @@ class NotificationListener : NotificationListenerService() {
             flag = true
             var tmp = fullDateRegex2.findAll(notiString)
             var date = tmp.last()!!.value.split("년", "월", "일")
-            year = date[0]
             month = date[1]
             day = date[2]
 
@@ -150,7 +165,6 @@ class NotificationListener : NotificationListenerService() {
             flag = true
             var tmp = fullDateRegex3.findAll(notiString)
             var date = tmp.last()!!.value.split(".")
-            year = date[0]
             month = date[1]
             day = date[2]
 
@@ -161,7 +175,6 @@ class NotificationListener : NotificationListenerService() {
             flag = true
             var tmp = fullDateRegex4.findAll(notiString)
             var date = tmp.last()!!.value.split(".")
-            year = date[0]
             month = date[1]
             day = date[2]
 

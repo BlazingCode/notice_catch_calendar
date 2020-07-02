@@ -6,12 +6,13 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/n1"
             android:title="알림 접근 허용" />
         <item
+            android:id="@+id/n2"
             android:title="알림 받을 앱" />
         <item
-            android:title="일정으로 등록된 알림" />
-        <item
+            android:id="@+id/n3"
             android:title="키워드 관리" />
     </group>
 </menu>
