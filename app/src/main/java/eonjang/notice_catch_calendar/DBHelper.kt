@@ -31,10 +31,15 @@ class DBHelper (
                 "(_id integer primary key autoincrement," +
                 "word)"
         db.execSQL(sql)
+        sql  =  "CREATE TABLE if not exists log" +
+                "(_id integer primary key autoincrement," +
+                "title,"+
+                "text)"
+        db.execSQL(sql)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        val sql: String = "DROP TABLE if exists mytable"
+        val sql: String = "DROP TABLE if exists calendar"
 
         db.execSQL(sql)
         onCreate(db)

@@ -164,10 +164,15 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             var ftime = arrayFtime.get(position).split(":").toMutableList()
 
             for(i in 0..1){
-                if(stime[i].toInt() <10){
+                if((stime[i].toInt() <10) &&!(stime[i].contains("0"))){
+                    stime[i] = "0" + stime[i].toString()
+                }else if(stime[i].equals("0")) {
                     stime[i] = "0" + stime[i].toString()
                 }
-                if(ftime[i].toInt() <10){
+
+                if((ftime[i].toInt() <10)&&!(ftime[i].contains("0"))){
+                    ftime[i] = "0" + ftime[i].toString()
+                }else if(ftime[i].equals("0")) {
                     ftime[i] = "0" + ftime[i].toString()
                 }
             }
@@ -215,6 +220,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             }
             R.id.n3 ->{
                 var sIntent=Intent(this,KeywordSetting::class.java)
+                startActivity(sIntent)
+            }
+            R.id.n4 ->{
+                var sIntent=Intent(this,LogActivity::class.java)
                 startActivity(sIntent)
             }
         }

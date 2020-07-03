@@ -89,6 +89,7 @@ class NotificationListener : NotificationListenerService() {
                         month = month.toInt().toString()
                         day = day.toInt().toString()
                         database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
+                        database.execSQL("INSERT INTO log('title','text')values('$notiTitle','$text');")
                     }
                 } else {
                     Log.d("Sucess", packageName + " " + text)
@@ -101,6 +102,7 @@ class NotificationListener : NotificationListenerService() {
                     month = month.toInt().toString()
                     day = day.toInt().toString()
                     database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
+                    database.execSQL("INSERT INTO log('title','text')values('$notiTitle','$text');")
                 }
             }
         } else {
@@ -117,6 +119,7 @@ class NotificationListener : NotificationListenerService() {
                         month = month.toInt().toString()
                         day = day.toInt().toString()
                         database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
+                        database.execSQL("INSERT INTO log('title','text')values('$notiTitle','$text');")
                     }
                 } else {
                     Log.d("Sucess", packageName + " " + text)
@@ -129,6 +132,7 @@ class NotificationListener : NotificationListenerService() {
                     month = month.toInt().toString()
                     day = day.toInt().toString()
                     database.execSQL("INSERT INTO calendar('year','month','day','title','memo','start_time','finish_time','color') values('$year','$month','$day','$title','$memo','$start_time','$finish_time','$color'); ")
+                    database.execSQL("INSERT INTO log('title','text')values('$notiTitle','$text');")
                 }
             }
         }
@@ -220,12 +224,8 @@ class NotificationListener : NotificationListenerService() {
             !(fullTimeRegex2.find(notiString)?.value.equals(null)) -> { //00시00분 패턴이 포함된 경우
                 flag = true
                 var tmp = fullTimeRegex2.findAll(notiString)
-                start_time =
-                    tmp.last()!!.value.replace("시", ":")
-                        .replace("분", "")
-                finish_time =
-                    tmp.last()!!.value.replace("시", ":")
-                        .replace("분", "")
+                start_time = tmp.last()!!.value.replace("시", ":").replace("분", "")
+                finish_time = tmp.last()!!.value.replace("시", ":").replace("분", "")
             }
             !(hourRegex.find(notiString)?.value.equals(null)) -> { //00시 패턴이 포함된 경우
                 flag = true
